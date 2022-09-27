@@ -3,14 +3,14 @@ pipeline{
 	agent any
 
 	environment{
-			DOCKERHUB_CREDENTIALS=credentials('dockerhub_credential_name_on_jenkins')
+			DOCKERHUB_CREDENTIALS=credentials('dockerhub')
 		}
 
 	stages{
 		stages('Build') {
 
 			steps {
-				sh 'docker build -t docker_repository_name/app_image_name:tag .'
+				sh 'docker build -t raul012/node_app:2.0 .'
 			      }
 
 			}
@@ -28,7 +28,7 @@ pipeline{
 		stages('Push') {
 
                         steps {
-                                sh 'docker push docker_repository_name/app_image_name:tag'
+                                sh 'docker push raul012/node_app:2.0'
                               }
 
                         }
